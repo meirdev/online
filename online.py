@@ -19,8 +19,8 @@ URLS: list[Url] = [
     ),
     Url(
         name="Apple",
-        url="https://captive.apple.com/hotspot-detect.html",
-        excepted=lambda response: response.read() == b"Success",
+        url="http://captive.apple.com/hotspot-detect.html",
+        excepted=lambda response: b"Success" in response.read(),
     ),
     Url(
         name="Microsoft",
@@ -46,5 +46,5 @@ def main() -> NoReturn:
     sys.exit(1)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()
